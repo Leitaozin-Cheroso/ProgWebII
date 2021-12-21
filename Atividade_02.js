@@ -15,8 +15,8 @@ topicos.forEach(topico => {
 	const item = document.createElement('li');
 	item.textContent = topico;
 	lista.append(item); 
-	const lin = document.createElement('a'); 
-	lin.setAttribute('href', `#${topico}`);   
-	lin.textContent = ' - ' + topico; 
-	item.append(lin);
+	const link = document.createElement('a'); 
+	link.setAttribute('href', `#${topico}`);   
+	link.textContent = ' - ' + topico; 
+	item.append(link);
 });
