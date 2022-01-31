@@ -19,8 +19,8 @@ function atualiza(){
     h6.style.fontSize = `${tamanho}em`;
 }
 function aumenta(){
-    tamanho += 1;
     while (tamanho < 9){
+        tamanho += 1
         atualiza()
     }
 }
