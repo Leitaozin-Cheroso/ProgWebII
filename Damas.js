@@ -36,7 +36,6 @@ function criaTabuleiro() {
             }
         }
     };
-	
     return tabela;	
 }
 
@@ -48,7 +47,6 @@ function criaPeca(cor,ide) {
 		imagem.setAttribute('draggable','true');
 		imagem.setAttribute('id', ide);
 		imagem.setAttribute('class', cor);
-		
     return imagem;
 }
 
