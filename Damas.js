@@ -1,7 +1,7 @@
 const tamanhoCelula = 40;
 let pecaId = 0;
-let local = 80;
-let proximoLocal = 81;
+let localAtual = 80;
+let localFuturo = 81;
 let classe = '';
 document.body.append(criaTabuleiro());
 
@@ -33,9 +33,11 @@ function criaTabuleiro() {
                 }
             } else {
                 celula.style.backgroundColor = 'white';
-            		}
-    }};
-		return tabela;	
+            }
+        }
+    };
+	
+    return tabela;	
 }
 
 function criaPeca(cor,ide) {
@@ -46,6 +48,7 @@ function criaPeca(cor,ide) {
 		imagem.setAttribute('draggable','true');
 		imagem.setAttribute('id', ide);
 		imagem.setAttribute('class', cor);
+		
     return imagem;
 }
 
@@ -75,9 +78,9 @@ function drop(){
 		const data = event.dataTransfer.getData("Text");
 		let c = event.path[0];
 		let t = c.childElementCount;
-		proximoLocal = event.target.id;
-		if(t == '0' && local != proximoLocal){
-			if(classe == 'red' && local > proximoLocal && local - proximoLocal == 1|| classe == 'black' && local < proximoLocal && proximoLocal - local == 1) {
+		localFuturo = event.target.id;
+		if(t == '0' && localAtual != localFuturo){
+			if(classe == 'red' && localAtual > localFuturo && localAtual - localFuturo == 1|| classe == 'black' && localAtual < localFuturo && localFuturo - localAtual == 1) {
 				event.target.appendChild(document.getElementById(data));
 			}
 		}
