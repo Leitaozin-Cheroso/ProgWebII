@@ -5,6 +5,17 @@ let localFuturo = 81;
 let classe = '';
 document.body.append(criaTabuleiro());
 
+function criaPeca(cor,ide) {
+	let imagem = document.createElement('img');
+	imagem.setAttribute('src', `${cor}.png`);
+	imagem.setAttribute('width', `${tamanhoCelula-4}px`);
+	imagem.setAttribute('height', `${tamanhoCelula-4}px`);
+	imagem.setAttribute('draggable','true');
+	imagem.setAttribute('id', ide);
+	imagem.setAttribute('class', cor);
+return imagem;
+}
+
 function criaTabuleiro() {
     const tamanho = 8;
     let tabela = document.createElement('table');
@@ -39,27 +50,11 @@ function criaTabuleiro() {
     return tabela;	
 }
 
-function criaPeca(cor,ide) {
-		let imagem = document.createElement('img');
-		imagem.setAttribute('src', `${cor}.png`);
-		imagem.setAttribute('width', `${tamanhoCelula-4}px`);
-		imagem.setAttribute('height', `${tamanhoCelula-4}px`);
-		imagem.setAttribute('draggable','true');
-		imagem.setAttribute('id', ide);
-		imagem.setAttribute('class', cor);
-    return imagem;
-}
-
-function dragstart(){
+function iniciarDrag(){
 	document.addEventListener("dragstart", function(event) {
 	  event.dataTransfer.setData("Text", event.target.id);
 	  localAtual = event.path[1].id;
 	  classe = (event.path[0].className);
-	});
-}
-
-function dragend() {
-	document.addEventListener("dragend", function(event) {
 	});
 }
 
@@ -69,7 +64,12 @@ function dragover() {
 	});
 }
 
-function drop(){
+function pararDrag() {
+	document.addEventListener("dragend", function(event) {
+	});
+}
+
+function dropar(){
 	document.addEventListener("drop", function(event) {
 	event.preventDefault();
 	if ( event.target.className == "droptarget") {
@@ -85,7 +85,7 @@ function drop(){
 	}
 	});
 }
-dragstart();
-dragend();
+iniciarDrag();
+pararDrag();
 dragover();
-drop();
+dropar();
